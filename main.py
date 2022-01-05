@@ -46,10 +46,10 @@ def convert(table: dict, base: int, original: str) -> int:
     Return:
         converted: int -- The base 10 value.
     """
-    converted = 0
-    for character in enumerate(original[::-1]):
-        converted += table[character[1]] * (base ** character[0])
-    return converted
+    return sum(
+        table[character[1]] * (base ** character[0])
+        for character in enumerate(original[::-1])
+    )
 
 
 def main():
